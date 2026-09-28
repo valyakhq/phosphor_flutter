@@ -37,15 +37,15 @@ class PhosphorIcon extends Icon {
 
   @override
   Widget build(BuildContext context) {
-    if (icon is PhosphorDuotoneIconData) {
-      final duotoneIcon = icon as PhosphorDuotoneIconData;
+    final secondary = icon == null ? null : phosphorDuotoneSecondary(icon!);
+    if (secondary != null) {
       return Stack(
         alignment: Alignment.center,
         children: [
           Opacity(
             opacity: duotoneSecondaryOpacity,
             child: Icon(
-              duotoneIcon.secondary,
+              secondary,
               key: key,
               size: size,
               fill: fill,
