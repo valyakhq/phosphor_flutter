@@ -12,7 +12,22 @@ void main() {
     expect(icon.codePoint, 0xeb9a);
     expect(icon.fontFamily, 'PhosphorRegular');
     expect(icon.fontPackage, 'phosphor_flutter');
-    expect(icon.matchTextDirection, isTrue);
+    expect(icon.matchTextDirection, isFalse);
+  });
+
+  test('only directional glyphs mirror in right-to-left text', () {
+    for (final style in PhosphorIconsStyle.values) {
+      expect(PhosphorIcons.check(style).matchTextDirection, isFalse, reason: '$style');
+      expect(PhosphorIcons.clock(style).matchTextDirection, isFalse, reason: '$style');
+      expect(PhosphorIcons.qrCode(style).matchTextDirection, isFalse, reason: '$style');
+      expect(PhosphorIcons.alignLeft(style).matchTextDirection, isFalse, reason: '$style');
+      expect(PhosphorIcons.caretLeft(style).matchTextDirection, isTrue, reason: '$style');
+      expect(PhosphorIcons.arrowRight(style).matchTextDirection, isTrue, reason: '$style');
+      expect(PhosphorIcons.signOut(style).matchTextDirection, isTrue, reason: '$style');
+    }
+    // A duotone icon's background layer mirrors with its foreground.
+    expect(phosphorDuotoneSecondary(PhosphorIconsDuotone.caretLeft)?.matchTextDirection, isTrue);
+    expect(phosphorDuotoneSecondary(PhosphorIconsDuotone.checkCircle)?.matchTextDirection, isFalse);
   });
 
   test('the style helper returns the matching style constant', () {

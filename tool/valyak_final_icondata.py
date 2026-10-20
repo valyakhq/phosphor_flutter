@@ -12,6 +12,9 @@ called with constants (flutter/flutter#181345). Upstream's
 3. Keeps duotone working: each duotone constant is its primary glyph, and the
    secondary glyph moves to a generated const table that ``PhosphorIcon``
    looks up by code point.
+4. Sets ``matchTextDirection`` only on directional glyphs (``mirrors``).
+   Upstream mirrored every icon, so a tick, a clock or a QR code came out
+   flipped in Arabic.
 
 Idempotent: run it again after merging a new upstream release.
 Usage: python3 tool/valyak_final_icondata.py  (from the repo root)
@@ -27,10 +30,67 @@ FLAT_STYLES = ("regular", "thin", "light", "bold", "fill")
 
 
 def icon_data(code_point: str, style: str) -> str:
-    return (
-        f"IconData({code_point}, fontFamily: 'Phosphor{style}', "
-        "fontPackage: 'phosphor_flutter', matchTextDirection: true)"
+    """Unmirrored; ``set_mirroring`` adds the flag to the directional ones."""
+    return f"IconData({code_point}, fontFamily: 'Phosphor{style}', fontPackage: 'phosphor_flutter')"
+
+
+# A glyph mirrors in right-to-left text only when it points along the line:
+# back/forward, arrows and carets naming a side, lists and indents (the
+# bullets sit at the start), send, sign in/out, toggles, trends. A side that
+# is a fixed position rather than a direction (align left, add a column on
+# the left, the left mouse button) does not mirror, nor does anything
+# symmetric in meaning (check, clock, QR code, scan, refresh).
+_SIDE = re.compile(r"(?<=[a-z0-9])(Left|Right)(?=[A-Z0-9]|$)")
+_FIXED_SIDE_PREFIXES = ("align", "textAlign", "columnsPlus", "mouse")
+_MIRRORED_EXTRAS = frozenset({
+    "arrowSquareIn", "arrowSquareOut", "backspace", "keyReturn",
+    "paperPlaneRight", "paperPlaneTilt", "phoneIncoming", "phoneOutgoing",
+    "sidebar", "sidebarSimple", "signIn", "signOut", "textIndent",
+    "textOutdent", "trendDown", "trendUp",
+})
+
+
+def mirrors(name: str) -> bool:
+    if name in _MIRRORED_EXTRAS:
+        return True
+    if name.startswith("list") and name != "list":
+        return True
+    if name == "arrowsLeftRight" or name.startswith(_FIXED_SIDE_PREFIXES):
+        return False
+    return bool(_SIDE.search(name))
+
+
+_CONSTANT = re.compile(
+    r"static const (\w+) =(\s+)IconData\((0x[0-9a-f]+), (fontFamily: [^)]*?)(, matchTextDirection: true)?\);"
+)
+_SECONDARY = re.compile(r"^  (0x[0-9a-f]+): IconData\((.*?)(, matchTextDirection: true)?\),$", re.M)
+_FLAG = ", matchTextDirection: true"
+
+
+def set_mirroring() -> list[str]:
+    """Set the flag on every constant from ``mirrors``; returns the mirrored names."""
+    mirrored: set[str] = set()
+    duotone_mirrored: set[str] = set()
+    for style in (*FLAT_STYLES, "duotone"):
+        path = SRC / f"phosphor_icons_{style}.dart"
+
+        def replace(m: re.Match[str]) -> str:
+            flag = _FLAG if mirrors(m[1]) else ""
+            if flag:
+                mirrored.add(m[1])
+                if style == "duotone":
+                    duotone_mirrored.add(m[3])
+            return f"static const {m[1]} ={m[2]}IconData({m[3]}, {m[4]}{flag});"
+
+        path.write_text(_CONSTANT.sub(replace, path.read_text()))
+    secondaries = SRC / "phosphor_duotone_secondaries.dart"
+    secondaries.write_text(
+        _SECONDARY.sub(
+            lambda m: f"  {m[1]}: IconData({m[2]}{_FLAG if m[1] in duotone_mirrored else ''}),",
+            secondaries.read_text(),
+        )
     )
+    return sorted(mirrored)
 
 
 UNUSED_IMPORT = "import 'package:phosphor_flutter/src/phosphor_icon_data.dart';\n"
@@ -124,6 +184,8 @@ def main() -> None:
     (SRC / "phosphor_icon_data.dart").write_text(ICON_DATA_DART)
     rewrite_icon_widget(SRC / "phosphor_icon.dart")
     set_sdk_constraint()
+    mirrored = set_mirroring()
+    print(f"mirrored in RTL: {len(mirrored)} icons: {' '.join(mirrored)}")
 
 
 def set_sdk_constraint() -> None:
