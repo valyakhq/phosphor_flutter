@@ -36,16 +36,19 @@ def icon_data(code_point: str, style: str) -> str:
 
 # A glyph mirrors in right-to-left text only when it points along the line:
 # back/forward, arrows and carets naming a side, lists and indents (the
-# bullets sit at the start), send, sign in/out, toggles, trends. A side that
+# bullets sit at the start), send, share, sign in/out, toggles, trends
+# (U-turns such as arrowULeftDown included). A side that
 # is a fixed position rather than a direction (align left, add a column on
 # the left, the left mouse button) does not mirror, nor does anything
-# symmetric in meaning (check, clock, QR code, scan, refresh).
-_SIDE = re.compile(r"(?<=[a-z0-9])(Left|Right)(?=[A-Z0-9]|$)")
+# symmetric in meaning (check, clock, QR code, scan, refresh). Media controls
+# (play, skip, rewind) stay as they are: Material does not mirror playback,
+# since it shows the direction a recording runs, not the reading direction.
+_SIDE = re.compile(r"(?<=[a-z0-9U])(Left|Right)(?=[A-Z0-9]|$)")
 _FIXED_SIDE_PREFIXES = ("align", "textAlign", "columnsPlus", "mouse")
 _MIRRORED_EXTRAS = frozenset({
     "arrowSquareIn", "arrowSquareOut", "backspace", "keyReturn",
     "paperPlaneRight", "paperPlaneTilt", "phoneIncoming", "phoneOutgoing",
-    "sidebar", "sidebarSimple", "signIn", "signOut", "textIndent",
+    "share", "shareFat", "sidebar", "sidebarSimple", "signIn", "signOut", "textIndent",
     "textOutdent", "trendDown", "trendUp",
 })
 

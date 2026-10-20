@@ -336,16 +336,16 @@ class PhosphorIconsFill {
   static const arrowUDownRight = IconData(0xe080, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![arrow-u-left-down-fill](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/fill/arrow-u-left-down-fill.svg)
-  static const arrowULeftDown = IconData(0xe082, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter');
+  static const arrowULeftDown = IconData(0xe082, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![arrow-u-left-up-fill](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/fill/arrow-u-left-up-fill.svg)
-  static const arrowULeftUp = IconData(0xe084, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter');
+  static const arrowULeftUp = IconData(0xe084, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![arrow-u-right-down-fill](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/fill/arrow-u-right-down-fill.svg)
-  static const arrowURightDown = IconData(0xe086, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter');
+  static const arrowURightDown = IconData(0xe086, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![arrow-u-right-up-fill](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/fill/arrow-u-right-up-fill.svg)
-  static const arrowURightUp = IconData(0xe088, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter');
+  static const arrowURightUp = IconData(0xe088, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![arrow-u-up-left-fill](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/fill/arrow-u-up-left-fill.svg)
   static const arrowUUpLeft = IconData(0xe08a, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter', matchTextDirection: true);
@@ -3558,10 +3558,10 @@ class PhosphorIconsFill {
   static const shapes = IconData(0xec5e, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter');
 
   /// ![share-fill](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/fill/share-fill.svg)
-  static const share = IconData(0xe406, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter');
+  static const share = IconData(0xe406, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![share-fat-fill](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/fill/share-fat-fill.svg)
-  static const shareFat = IconData(0xed52, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter');
+  static const shareFat = IconData(0xed52, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![share-network-fill](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/fill/share-network-fill.svg)
   static const shareNetwork = IconData(0xe408, fontFamily: 'PhosphorFill', fontPackage: 'phosphor_flutter');

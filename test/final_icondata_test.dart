@@ -24,6 +24,10 @@ void main() {
       expect(PhosphorIcons.caretLeft(style).matchTextDirection, isTrue, reason: '$style');
       expect(PhosphorIcons.arrowRight(style).matchTextDirection, isTrue, reason: '$style');
       expect(PhosphorIcons.signOut(style).matchTextDirection, isTrue, reason: '$style');
+      expect(PhosphorIcons.arrowULeftDown(style).matchTextDirection, isTrue, reason: '$style');
+      expect(PhosphorIcons.share(style).matchTextDirection, isTrue, reason: '$style');
+      expect(PhosphorIcons.listBullets(style).matchTextDirection, isTrue, reason: '$style');
+      expect(PhosphorIcons.skipForward(style).matchTextDirection, isFalse, reason: '$style');
     }
     // A duotone icon's background layer mirrors with its foreground.
     expect(phosphorDuotoneSecondary(PhosphorIconsDuotone.caretLeft)?.matchTextDirection, isTrue);

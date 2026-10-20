@@ -6,9 +6,10 @@
 > `tool/valyak_final_icondata.py` (idempotent — re-run after merging upstream). Tested on Flutter
 > 3.41.9, 3.44.4 and 3.47.5. Drop this fork once upstream ships a fix.
 >
-> Upstream mirrors every icon in right-to-left text. Here only the 94 directional glyphs do (arrows
-> and carets with a side, lists, indents, send, sign in/out, toggles, trends, backspace, return):
-> `mirrors()` in the same script. A tick, a clock, a QR code or "align left" keeps its shape.
+> Upstream mirrors every icon in right-to-left text. Here only the 100 directional glyphs do (arrows
+> and carets with a side, U-turns, lists, indents, send, share, sign in/out, toggles, trends,
+> backspace, return): `mirrors()` in the same script. A tick, a clock, a QR code, "align left" or a
+> media control (play, skip, rewind, as in Material) keeps its shape.
 
 <img src="/meta/phosphor-mark-tight-yellow.png" width="128" align="right" />
 

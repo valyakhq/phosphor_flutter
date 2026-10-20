@@ -335,16 +335,16 @@ class PhosphorIconsDuotone {
   static const arrowUDownRight = IconData(0xe081, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![arrow-u-left-down-duotone](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/duotone/arrow-u-left-down-duotone.svg)
-  static const arrowULeftDown = IconData(0xe083, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter');
+  static const arrowULeftDown = IconData(0xe083, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![arrow-u-left-up-duotone](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/duotone/arrow-u-left-up-duotone.svg)
-  static const arrowULeftUp = IconData(0xe085, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter');
+  static const arrowULeftUp = IconData(0xe085, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![arrow-u-right-down-duotone](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/duotone/arrow-u-right-down-duotone.svg)
-  static const arrowURightDown = IconData(0xe087, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter');
+  static const arrowURightDown = IconData(0xe087, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![arrow-u-right-up-duotone](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/duotone/arrow-u-right-up-duotone.svg)
-  static const arrowURightUp = IconData(0xe089, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter');
+  static const arrowURightUp = IconData(0xe089, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![arrow-u-up-left-duotone](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/duotone/arrow-u-up-left-duotone.svg)
   static const arrowUUpLeft = IconData(0xe08b, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter', matchTextDirection: true);
@@ -3557,10 +3557,10 @@ class PhosphorIconsDuotone {
   static const shapes = IconData(0xec5f, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter');
 
   /// ![share-duotone](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/duotone/share-duotone.svg)
-  static const share = IconData(0xe409, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter');
+  static const share = IconData(0xe409, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![share-fat-duotone](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/duotone/share-fat-duotone.svg)
-  static const shareFat = IconData(0xed57, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter');
+  static const shareFat = IconData(0xed57, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter', matchTextDirection: true);
 
   /// ![share-network-duotone](https://raw.githubusercontent.com/phosphor-icons/core/main/assets/duotone/share-network-duotone.svg)
   static const shareNetwork = IconData(0xe40b, fontFamily: 'PhosphorDuotone', fontPackage: 'phosphor_flutter');
